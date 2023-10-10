@@ -8,6 +8,7 @@ package gst
 
 */
 import "C"
+
 import (
 	"container/list"
 	"math"
@@ -82,8 +83,10 @@ type Pipeline struct {
 	mediaSampleChanel chan *media.Sample
 }
 
-var pipelines = make(map[int]*Pipeline)
-var pipelinesLock sync.Mutex
+var (
+	pipelines     = make(map[int]*Pipeline)
+	pipelinesLock sync.Mutex
+)
 
 const (
 	videoClockRate = 90000
